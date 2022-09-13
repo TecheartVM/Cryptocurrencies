@@ -2,6 +2,6 @@
 {
     public class CoinsModel
     {
-        public ListItemModel<CoinModel>[] Coins { get; set; }
+        public CoinModel[] Coins { get; set; }
     }
 }

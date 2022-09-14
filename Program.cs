@@ -1,4 +1,5 @@
-﻿using Cryptocurrencies.Models;
+﻿using Cryptocurrencies.Api;
+using Cryptocurrencies.Models;
 using Cryptocurrencies.Models.Coins;
 using Cryptocurrencies.Models.Markets;
 using Newtonsoft.Json.Linq;

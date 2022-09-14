@@ -1,6 +1,6 @@
 ﻿using Cryptocurrencies.Exceptions;
 
-namespace Cryptocurrencies
+namespace Cryptocurrencies.Api
 {
     internal static class ApiHelper
     {

@@ -3,7 +3,7 @@ using Cryptocurrencies.Models;
 using Cryptocurrencies.Models.Coins;
 using Cryptocurrencies.Models.Markets;
 
-namespace Cryptocurrencies
+namespace Cryptocurrencies.Api
 {
     internal static class ApiRequests
     {
@@ -60,7 +60,7 @@ namespace Cryptocurrencies
 
                 return fromPrice / toPrice;
             }
-            catch(KeyNotFoundException e)
+            catch (KeyNotFoundException e)
             {
                 throw new BadApiResponseException(e.Message);
             }

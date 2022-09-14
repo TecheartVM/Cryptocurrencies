@@ -1,4 +1,4 @@
-﻿namespace Cryptocurrencies
+﻿namespace Cryptocurrencies.Configuration
 {
     internal class Configuration
     {

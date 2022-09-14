@@ -2,6 +2,6 @@
 {
     public class CoinsModel
     {
-        public CoinModel[] Coins { get; set; }
+        public CoinSimpleModel[] Coins { get; set; }
     }
 }

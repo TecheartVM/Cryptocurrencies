@@ -8,36 +8,49 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto" MinHeight="34"/>
             <RowDefinition Height="auto" MinHeight="55"/>
-            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" MinHeight="34"/>
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" MinHeight="74"/>
         </Grid.RowDefinitions>
 
-        <Button Grid.Row="0" x:Name="HomeBtn" Content="Home" Command="{Binding GoHomeCommand}" HorizontalAlignment="Left" Margin="25,0,0,0" VerticalAlignment="Center" Height="34" Width="150" Cursor="Hand"/>
+        <Button Grid.Row="0"
+                x:Name="BackBtn"
+                Content="&#129144;" Command="{Binding GoBackCommand}"
+                HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                Margin="10,0,0,0"
+                Height="35" MinWidth="35"
+                Cursor="Hand"/>
+        
+        <Button Grid.Row="0"
+                x:Name="HomeBtn"
+                Content="Home" Command="{Binding GoHomeCommand}"
+                HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                Margin="0,0,10,0"
+                Height="20" MinWidth="80"
+                Cursor="Hand"/>
 
-        <TextBlock Grid.Row="1" Margin="5,5,5,5" VerticalAlignment="Bottom">
-            <Run Text="{Binding Localization, Mode=OneWay}" />
-            <Run Text=" (" />
-            <Run Text="{Binding Symbol, Mode=OneWay}" />
-            <Run Text=")" />
+        <TextBlock Grid.Row="0" Margin="80,0,175,0" VerticalAlignment="Bottom" FontSize="20" >
+            <Run Text="{Binding Localization, Mode=OneWay}" FontSize="34" />
+            <Run Text=" (" Foreground="Gray" />
+            <Run Text="{Binding Symbol, Mode=OneWay}" Foreground="Gray" />
+            <Run Text=")" Foreground="Gray" />
         </TextBlock>
 
-        <TextBlock Grid.Row="2" Margin="5,5,5,5" VerticalAlignment="Center">
+        <TextBlock Grid.Row="1" Margin="80,5,5,5" VerticalAlignment="Center" FontSize="20" >
             <Run Text="{Binding Price, Mode=OneWay, StringFormat={}{0:C0}}" />
             <Run Text=" " />
             <Run Text="{Binding PriceChange, Mode=OneWay}" Foreground="{Binding PriceChangeColor, Mode=OneWay}" />
             <Run Text="%" Foreground="{Binding PriceChangeColor, Mode=OneWay}" />
         </TextBlock>
 
-        <TextBlock Grid.Row="3" Margin="5,5,5,5" VerticalAlignment="Center">
-            <Run Text="Market Cap   " />
+        <TextBlock Grid.Row="2" Margin="80,5,5,5" VerticalAlignment="Center">
+            <Run Text="Market Cap    " />
             <Run Text="{Binding MarketCap, Mode=OneWay, StringFormat={}{0:C0}}" />
         </TextBlock>
 
-        <TextBlock Grid.Row="4" Margin="5,5,5,5" VerticalAlignment="Center">
+        <TextBlock Grid.Row="3" Margin="80,5,5,5" VerticalAlignment="Center">
             <Run Text="Genesis date    " />
             <Run Text="{Binding GenesisDate, Mode=OneWay, StringFormat=d}" />
         </TextBlock>

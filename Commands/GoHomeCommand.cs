@@ -1,4 +1,4 @@
-﻿using CryptocurrenciesWPF.ViewModels.Pages;
+﻿using CryptocurrenciesWPF.ViewModels.Pages.Home;
 
 namespace CryptocurrenciesWPF.Commands
 {

@@ -1,5 +1,6 @@
 ﻿using CryptocurrenciesWPF.Commands;
 using CryptocurrenciesWPF.Models.Coins;
+using CryptocurrenciesWPF.Navigation;
 using CryptocurrenciesWPF.ViewModels.Coins;
 using System;
 using System.Windows.Input;
@@ -58,11 +59,13 @@ namespace CryptocurrenciesWPF.ViewModels.Pages
             }
         }
 
+        public ICommand GoBackCommand { get; }
         public ICommand GoHomeCommand { get; }
 
         public CoinInfoViewModel(CoinInfoModel model) : base(model)
         {
             _model = model;
+            GoBackCommand = new NavigateCommand(param => NavigationStore.Instance.PreviousViewModel);
             GoHomeCommand = new GoHomeCommand();
         }
     }

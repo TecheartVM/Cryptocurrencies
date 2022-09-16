@@ -10,26 +10,23 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace CryptocurrenciesWPF.ViewModels.Pages.Internal
+namespace CryptocurrenciesWPF.ViewModels.Pages.Home
 {
-    public class TopCoinsViewModel : ViewModelBase
+    public class HomeContentBaseViewModel<T> : ViewModelBase where T : CoinSimpleViewModel
     {
-        private readonly ObservableCollection<CoinViewModel> _coins;
+        protected readonly ObservableCollection<T> _coins;
 
-        public IEnumerable<CoinViewModel> Coins => _coins;
+        public IEnumerable<T> Coins => _coins;
 
         public int SelectedItemIndex { get; set; }
 
-        public ICommand RefreshCommand { get; }
-        public ICommand NavigateCommand { get; }
         public ICommand ShowCoinInfoCommand { get; }
 
-        public TopCoinsViewModel()
-        {
-            _coins = new ObservableCollection<CoinViewModel>();
 
-            RefreshCommand = new CustomAsyncCommand(Refresh);
-            NavigateCommand = new NavigateCommand(param => (ViewModelBase)param);
+        public HomeContentBaseViewModel()
+        {
+            _coins = new ObservableCollection<T>();
+
             ShowCoinInfoCommand = new CustomAsyncCommand(OnSelectedItemChangedAsync);
         }
 
@@ -43,30 +40,11 @@ namespace CryptocurrenciesWPF.ViewModels.Pages.Internal
             }
         }
 
-        public async Task Refresh()
-        {
-            await LoadTopCoins();
-        }
-
-        public async Task LoadTopCoins()
-        {
-            try
-            {
-                CoinModel[] models = await ApiRequests.GetTopCoinsAsync(10);
-
-                _coins.Clear();
-
-                foreach (CoinModel coin in models)
-                    _coins.Add(new CoinViewModel(coin));
-            }
-            catch (Exception e) { }
-        }
-
         public async Task<CoinInfoViewModel?> GetSelectedCoinInfoAsync()
         {
             try
             {
-                CoinViewModel selected = Coins.ToList<CoinViewModel>()[SelectedItemIndex];
+                T selected = Coins.ToList()[SelectedItemIndex];
                 CoinInfoModel data = await ApiRequests.GetCoinAsync(selected.Id);
                 return new CoinInfoViewModel(data);
             }

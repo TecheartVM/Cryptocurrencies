@@ -13,10 +13,13 @@ namespace CryptocurrenciesWPF.Navigation
             get => _currentViewModel;
             set
             {
+                PreviousViewModel = _currentViewModel;
                 _currentViewModel = value;
                 OnCurrentViewModelChanged();
             }
         }
+
+        public ViewModelBase PreviousViewModel { get; set; }
 
         protected void OnCurrentViewModelChanged()
         {

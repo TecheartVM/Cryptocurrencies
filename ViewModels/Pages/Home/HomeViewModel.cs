@@ -1,9 +1,8 @@
 ﻿using CryptocurrenciesWPF.Commands;
-using CryptocurrenciesWPF.ViewModels.Pages.Internal;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace CryptocurrenciesWPF.ViewModels.Pages
+namespace CryptocurrenciesWPF.ViewModels.Pages.Home
 {
     public class HomeViewModel : ViewModelBase
     {

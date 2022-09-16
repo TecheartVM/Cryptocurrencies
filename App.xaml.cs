@@ -1,7 +1,7 @@
 ﻿using CryptocurrenciesWPF.Api;
 using CryptocurrenciesWPF.Navigation;
 using CryptocurrenciesWPF.ViewModels;
-using CryptocurrenciesWPF.ViewModels.Pages;
+using CryptocurrenciesWPF.ViewModels.Pages.Home;
 using System.Windows;
 
 namespace CryptocurrenciesWPF

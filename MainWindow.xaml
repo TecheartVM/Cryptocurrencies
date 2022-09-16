@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CryptocurrenciesWPF"
         xmlns:vms="clr-namespace:CryptocurrenciesWPF.ViewModels.Pages"
+        xmlns:home="clr-namespace:CryptocurrenciesWPF.ViewModels.Pages.Home"
         xmlns:views="clr-namespace:CryptocurrenciesWPF.Views"
         mc:Ignorable="d"
         Loaded="Window_Loaded"
@@ -14,7 +15,7 @@
     <Grid>
 
         <Grid.Resources>
-            <DataTemplate DataType="{x:Type vms:HomeViewModel}">
+            <DataTemplate DataType="{x:Type home:HomeViewModel}">
                 <views:HomeView />
             </DataTemplate>
 

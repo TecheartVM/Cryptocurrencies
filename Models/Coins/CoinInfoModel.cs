@@ -37,6 +37,16 @@ namespace CryptocurrenciesWPF.Models.Coins
         }
 
         [JsonIgnore]
+        public decimal? Volume
+        {
+            get
+            {
+                try { return (decimal?)MarketData?.Volume?.Dictionary["usd"]; }
+                catch (Exception e) { return null; }
+            }
+        }
+
+        [JsonIgnore]
         public float? PriceChangePercentage => MarketData?.PriceChange;
 
         public override string ToString()

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.Runtime.Serialization;
 
 namespace CryptocurrenciesWPF.Models.Markets
@@ -17,10 +18,15 @@ namespace CryptocurrenciesWPF.Models.Markets
 
         public MarketModel Market { get; set; }
 
-        [JsonProperty("converted_last")]
-        private DictionaryModel? _prices { get; set; }
         [JsonIgnore]
-        public decimal? Price { get; set; }
+        public string? MarketName { get => Market?.Name; }
+        [JsonIgnore]
+        public string? MarketId { get => Market?.Identifier; }
+
+        [JsonProperty("converted_last")]
+        public DictionaryModel? _prices { get; set; }
+        [JsonIgnore]
+        public decimal? Price { get; private set; }
 
         [JsonProperty("trade_url")]
         public string? TradeUrl { get; set; }
@@ -31,7 +37,9 @@ namespace CryptocurrenciesWPF.Models.Markets
         [OnDeserialized]
         private void OnDeserialized(StreamingContext context)
         {
-            Price = (decimal?)(_prices?.Dictionary?["usd"]);
+            try { Price = (decimal?)_prices?.Dictionary?["usd"]; }
+            catch (Exception e) { Price = null; }
+            /*Price = (decimal?)(_prices?.Dictionary?["usd"]);*/
         }
 
         public override string ToString()

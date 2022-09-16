@@ -12,5 +12,8 @@ namespace CryptocurrenciesWPF.Models.Coins
 
         [JsonProperty("market_cap")]
         public DictionaryModel? MarketCap { get; set; }
+
+        [JsonProperty("total_volume")]
+        public DictionaryModel? Volume { get; set; }
     }
 }

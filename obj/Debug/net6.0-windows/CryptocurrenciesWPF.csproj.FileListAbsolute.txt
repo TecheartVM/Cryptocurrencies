@@ -35,3 +35,5 @@ D:\Projects\C#\CryptocurrenciesWPF\CryptocurrenciesWPF\obj\Debug\net6.0-windows\
 D:\Projects\C#\CryptocurrenciesWPF\CryptocurrenciesWPF\obj\Debug\net6.0-windows\Views\TopCoinsView.baml
 D:\Projects\C#\CryptocurrenciesWPF\CryptocurrenciesWPF\obj\Debug\net6.0-windows\Views\SearchCoinsView.g.cs
 D:\Projects\C#\CryptocurrenciesWPF\CryptocurrenciesWPF\obj\Debug\net6.0-windows\Views\SearchCoinsView.baml
+D:\Projects\C#\CryptocurrenciesWPF\CryptocurrenciesWPF\obj\Debug\net6.0-windows\Views\CoinTickersView.g.cs
+D:\Projects\C#\CryptocurrenciesWPF\CryptocurrenciesWPF\obj\Debug\net6.0-windows\Views\CoinTickersView.baml

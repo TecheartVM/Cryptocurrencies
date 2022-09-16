@@ -13,6 +13,9 @@
     <Compile Update="Views\CoinInfoView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\CoinTickersView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\HomeView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -31,6 +34,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\CoinInfoView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\CoinTickersView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\HomeView.xaml">

@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 D:\Projects\C#\CryptocurrenciesWPF\CryptocurrenciesWPF\App.xaml
-6-1589970412
+7506624027
 
-382058798421
+41303602539
 198-1807149760
-MainWindow.xaml;Views\CoinConversionView.xaml;Views\CoinInfoView.xaml;Views\HomeView.xaml;Views\SearchCoinsView.xaml;Views\TopCoinsView.xaml;
+MainWindow.xaml;Views\CoinConversionView.xaml;Views\CoinInfoView.xaml;Views\CoinTickersView.xaml;Views\HomeView.xaml;Views\SearchCoinsView.xaml;Views\TopCoinsView.xaml;
 
 False
 

@@ -12,6 +12,17 @@ namespace CryptocurrenciesWPF.ViewModels.Pages
     {
         private readonly CoinInfoModel _model;
 
+        private CoinTickersViewModel _tickersViewModel;
+        public CoinTickersViewModel TickersViewModel
+        {
+            get => _tickersViewModel;
+            set
+            {
+                _tickersViewModel = value;
+                OnPropertyChanged(nameof(TickersViewModel));
+            }
+        }
+
         public decimal? MarketCap
         {
             get => _model.MarketCap;
@@ -26,6 +37,8 @@ namespace CryptocurrenciesWPF.ViewModels.Pages
         {
             get => (string?)_model.Description?.Dictionary?[Configuration.Configuration.GetLocalization()];
         }
+
+        public decimal? Volume { get => _model.Volume; }
 
         public DateTime? GenesisDate
         {
@@ -67,6 +80,8 @@ namespace CryptocurrenciesWPF.ViewModels.Pages
             _model = model;
             GoBackCommand = new NavigateCommand(param => NavigationStore.Instance.PreviousViewModel);
             GoHomeCommand = new GoHomeCommand();
+
+            TickersViewModel = new CoinTickersViewModel(Id, 0);
         }
     }
 }

@@ -1,13 +1,5 @@
-﻿using CryptocurrenciesWPF.Api;
-using CryptocurrenciesWPF.Commands;
-using CryptocurrenciesWPF.Models.Coins;
-using CryptocurrenciesWPF.Navigation;
-using CryptocurrenciesWPF.ViewModels.Coins;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
+﻿using CryptocurrenciesWPF.Commands;
+using CryptocurrenciesWPF.ViewModels.Pages.Internal;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -15,66 +7,43 @@ namespace CryptocurrenciesWPF.ViewModels.Pages
 {
     public class HomeViewModel : ViewModelBase
     {
-        private readonly ObservableCollection<CoinViewModel> _coins;
+        private string _searchRequest;
+        public string SearchRequest
+        {
+            get => _searchRequest;
+            set
+            {
+                _searchRequest = value;
+                OnPropertyChanged(nameof(SearchRequest));
+            }
+        }
 
-        public IEnumerable<CoinViewModel> Coins => _coins;
+        private ViewModelBase _content;
+        public ViewModelBase ContentViewModel
+        {
+            get => _content;
+            set
+            {
+                _content = value;
+                OnPropertyChanged(nameof(ContentViewModel));
+            }
+        }
 
-        public int SelectedItemIndex { get; set; }
-
-        public ICommand RefreshCommand { get; }
-        public ICommand NavigateCommand { get; }
-        public ICommand ShowCoinInfoCommand { get; }
+        public ICommand SearchCommand { get; }
 
         public HomeViewModel()
         {
-            _coins = new ObservableCollection<CoinViewModel>();
+            ContentViewModel = new TopCoinsViewModel();
 
-            RefreshCommand = new CustomAsyncCommand(Refresh);
-            NavigateCommand = new NavigateCommand(param => (ViewModelBase)param);
-            ShowCoinInfoCommand = new CustomAsyncCommand(OnSelectedItemChangedAsync);
+            SearchCommand = new CustomAsyncCommand(DoSearchAsync);
         }
 
-        protected async Task OnSelectedItemChangedAsync()
+        protected async Task DoSearchAsync()
         {
-            if(SelectedItemIndex >= 0)
-            {
-                CoinInfoViewModel? vm = await GetSelectedCoinInfoAsync();
-                if(vm != null)
-                    NavigateCommand.Execute(vm);
-            }
-        }
+            if (string.IsNullOrWhiteSpace(SearchRequest)) return;
 
-        public async Task Refresh()
-        {
-            await LoadTopCoins();
-        }
-
-        public async Task LoadTopCoins()
-        {
-            try
-            {
-                CoinModel[] models = await ApiRequests.GetTopCoinsAsync(10);
-
-                _coins.Clear();
-
-                foreach (CoinModel coin in models)
-                    _coins.Add(new CoinViewModel(coin));
-            }
-            catch (Exception e) { }
-        }
-
-        public async Task<CoinInfoViewModel?> GetSelectedCoinInfoAsync()
-        {
-            try
-            {
-                CoinViewModel selected = Coins.ToList<CoinViewModel>()[SelectedItemIndex];
-                CoinInfoModel data = await ApiRequests.GetCoinAsync(selected.Id);
-                return new CoinInfoViewModel(data);
-            }
-            catch(Exception e)
-            {
-                return null;
-            }
+            ContentViewModel = new SearchCoinsViewModel(SearchRequest);
+            await ((SearchCoinsViewModel)ContentViewModel).DoSearchAsync();
         }
     }
 }

@@ -17,44 +17,28 @@ namespace CryptocurrenciesWPF.Views
 {
     public partial class HomeView : UserControl
     {
-        public const string SearchBoxPlaceholder = "Search for coins";
-
-        private bool _placeholderAdded = false;
-        private Brush _searchboxDefaultForeground;
-
         public HomeView()
         {
             InitializeComponent();
 
-            SearchBox.GotFocus += RemoveSearchBoxPlaceholder;
+            Placeholder.GotFocus += RemoveSearchBoxPlaceholder;
             SearchBox.LostFocus += AddSearchBoxPlaceholder;
-
-            AddSearchBoxPlaceholder();
-        }
-
-        private void AddSearchBoxPlaceholder()
-        {
-            SearchBox.Text = SearchBoxPlaceholder;
-            _searchboxDefaultForeground = SearchBox.Foreground;
-            SearchBox.Foreground = Brushes.Gray;
-            _placeholderAdded = true;
         }
 
         private void AddSearchBoxPlaceholder(object sender, EventArgs args)
         {
             if(string.IsNullOrWhiteSpace(SearchBox.Text))
             {
-                AddSearchBoxPlaceholder();
+                Placeholder.Visibility = Visibility.Visible;
             }
         }
 
         private void RemoveSearchBoxPlaceholder(object sender, EventArgs args)
         {
-            if(_placeholderAdded && SearchBox.Text == SearchBoxPlaceholder)
+            if(Placeholder.Visibility == Visibility.Visible)
             {
-                SearchBox.Text = "";
-                SearchBox.Foreground = _searchboxDefaultForeground ?? Brushes.Black;
-                _placeholderAdded = false;
+                Placeholder.Visibility = Visibility.Hidden;
+                SearchBox.Focus();
             }
         }
     }

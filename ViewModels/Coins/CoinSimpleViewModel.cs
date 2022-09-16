@@ -24,7 +24,7 @@ namespace CryptocurrenciesWPF.ViewModels.Coins
             set { _model.Symbol = value; OnPropertyChanged(nameof(Symbol)); }
         }
 
-        public int MarketCapRank
+        public int? MarketCapRank
         {
             get => _model.MarketCapRank;
             set { _model.MarketCapRank = value; OnPropertyChanged(nameof(MarketCapRank)); }

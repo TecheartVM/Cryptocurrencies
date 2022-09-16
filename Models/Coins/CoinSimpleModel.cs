@@ -8,7 +8,7 @@ namespace CryptocurrenciesWPF.Models.Coins
         public string Name { get; set; }
         public string Symbol { get; set; }
         [JsonProperty("market_cap_rank")]
-        public int MarketCapRank { get; set; }
+        public int? MarketCapRank { get; set; }
 
         public override string ToString()
         {

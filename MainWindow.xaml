@@ -4,14 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CryptocurrenciesWPF"
-        xmlns:views="clr-namespace:CryptocurrenciesWPF.Views"
         xmlns:vms="clr-namespace:CryptocurrenciesWPF.ViewModels.Pages"
+        xmlns:views="clr-namespace:CryptocurrenciesWPF.Views"
         mc:Ignorable="d"
         Loaded="Window_Loaded"
         Title="CoinWatcher" Height="450" Width="800"
         ResizeMode="NoResize">
 
     <Grid>
+
         <Grid.Resources>
             <DataTemplate DataType="{x:Type vms:HomeViewModel}">
                 <views:HomeView />

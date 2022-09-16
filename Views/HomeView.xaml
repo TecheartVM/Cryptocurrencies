@@ -3,92 +3,49 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:CryptocurrenciesWPF.Views"
-             xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:local="clr-namespace:CryptocurrenciesWPF"
+             xmlns:views="clr-namespace:CryptocurrenciesWPF.Views"
+             xmlns:vms="clr-namespace:CryptocurrenciesWPF.ViewModels.Pages.Internal"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <b:Interaction.Triggers>
-            <b:EventTrigger EventName="Loaded">
-                <b:InvokeCommandAction Command="{Binding RefreshCommand}"/>
-            </b:EventTrigger>
-        </b:Interaction.Triggers>
+        <Grid.Resources>
+            <DataTemplate DataType="{x:Type vms:TopCoinsViewModel}">
+                <views:TopCoinsView />
+            </DataTemplate>
 
+            <DataTemplate DataType="{x:Type vms:SearchCoinsViewModel}">
+                <views:SearchCoinsView />
+            </DataTemplate>
+        </Grid.Resources>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" MinHeight="34"/>
-            <RowDefinition Height="auto" MinHeight="35"/>
-            <RowDefinition Height="auto" MinHeight="15"/>
-            <RowDefinition Height="auto" MinHeight="99"/>
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <TextBox x:Name="SearchBox"
+        <TextBox Grid.Row="0"
+                 x:Name="SearchBox"
+                 MinWidth="190" HorizontalAlignment="Right" Margin="0,0,34,0"
+                 VerticalContentAlignment="Center"
+                 Padding="5,0,0,0" 
+                 Text="{Binding SearchRequest}"/>
+
+        <TextBox Grid.Row="0"
+                 x:Name="Placeholder"
+                 Text="Search for coins"
+                 Foreground="Gray"
                  MinWidth="190" HorizontalAlignment="Right" Margin="0,0,34,0"
                  VerticalContentAlignment="Center"
                  Padding="5,0,0,0" />
-        
-        <Button Content="&#x1F50D;" MinWidth="34" HorizontalAlignment="Right" Margin="0,0,0,0" />
 
-        <TextBlock Text="Top 10 Coins"
-                   Grid.Row="1"
-                   FontSize="24" Margin="25,2,0,0" VerticalAlignment="Bottom" />
+        <Button Grid.Row="0"
+                Content="&#x1F50D;"
+                MinWidth="34"
+                HorizontalAlignment="Right"
+                Margin="0,0,0,0"
+                Command="{Binding SearchCommand}"/>
 
-        <TextBlock Text="Data from CoinGecko"
-                   Grid.Row="2"
-                   FontSize="14" Foreground="Gray" Margin="25,2,0,0" VerticalAlignment="Bottom" />
-
-        <ListView Grid.Row="3"
-                  Margin="25,25,25,25"
-                  ItemsSource="{Binding Coins}"
-                  Cursor="Hand"
-                  SelectionMode="Single"
-                  SelectedIndex="{Binding SelectedItemIndex, Mode=OneWayToSource}">
-
-            <b:Interaction.Triggers>
-                <b:EventTrigger EventName="SelectionChanged">
-                    <b:InvokeCommandAction Command="{Binding ShowCoinInfoCommand}"/>
-                </b:EventTrigger>
-            </b:Interaction.Triggers>
-
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="#" Width="40">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock TextAlignment="Right" Text="{Binding MarketCapRank}" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-
-                    <GridViewColumn Header="Coin" Width="305">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock TextAlignment="Center">
-                                    <Run Text="{Binding Name}" />
-                                    <Run Text=" (" />
-                                    <Run Text="{Binding Symbol}" />
-                                    <Run Text=")" />
-                                </TextBlock>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-
-                    <GridViewColumn Header="Price" Width="200">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock TextAlignment="Right" Text="{Binding Price}" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-
-                    <GridViewColumn Header="Market Cap" Width="200">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding MarketCap}" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <ContentControl Grid.Row="1" Content="{Binding ContentViewModel}" />
     </Grid>
 </UserControl>

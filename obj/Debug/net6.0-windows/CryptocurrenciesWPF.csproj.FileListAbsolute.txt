@@ -31,3 +31,7 @@ D:\Projects\C#\CryptocurrenciesWPF\CryptocurrenciesWPF\bin\Debug\net6.0-windows\
 D:\Projects\C#\CryptocurrenciesWPF\CryptocurrenciesWPF\bin\Debug\net6.0-windows\Newtonsoft.Json.Bson.dll
 D:\Projects\C#\CryptocurrenciesWPF\CryptocurrenciesWPF\obj\Debug\net6.0-windows\CryptocurrenciesWPF.csproj.CopyComplete
 D:\Projects\C#\CryptocurrenciesWPF\CryptocurrenciesWPF\bin\Debug\net6.0-windows\Microsoft.Xaml.Behaviors.dll
+D:\Projects\C#\CryptocurrenciesWPF\CryptocurrenciesWPF\obj\Debug\net6.0-windows\Views\TopCoinsView.g.cs
+D:\Projects\C#\CryptocurrenciesWPF\CryptocurrenciesWPF\obj\Debug\net6.0-windows\Views\TopCoinsView.baml
+D:\Projects\C#\CryptocurrenciesWPF\CryptocurrenciesWPF\obj\Debug\net6.0-windows\Views\SearchCoinsView.g.cs
+D:\Projects\C#\CryptocurrenciesWPF\CryptocurrenciesWPF\obj\Debug\net6.0-windows\Views\SearchCoinsView.baml
